@@ -41,6 +41,10 @@ The `runme.sh` script will sequentially execute `0_check_env.sh` through `5_draw
 Once the script completes, Figures 7–13 will be generated and 
 can be found in `figures` folder within the root directory of this repository.
 
+If you want to run CPU and GPU artifacts on different machines, you should turn on/off the two
+variables `AE_RUN_CPU` and `AE_RUN_GPU`. Additionally, you may also set `AE_BUILD_GPU` to `OFF`
+if your machine does not have installed CUDA.
+
 **Important Notes on Differences in Reproduced Results**
 Please note that RTSpatial and other baseline methods 
 may have very short execution times (less than 1 millisecond or just a few milliseconds) 
