@@ -24,11 +24,11 @@ fi
 if [[ ! -f "$AE_HOME/.glog" ]]; then
   wget "https://github.com/google/glog/archive/refs/tags/v0.6.0.tar.gz" -O "$AE_TMP_DIR/glog.tar.gz"
   rm -rf glog-0.6.0
-  tar zxvf "$AE_TMP_DIR/glog.tar.gz"
+  tar zxf "$AE_TMP_DIR/glog.tar.gz"
   pushd glog-0.6.0
   mkdir -p build
   pushd build
-  cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_PREFIX_PATH="$AE_DEPS_DIR" -DCMAKE_INSTALL_PREFIX="$AE_DEPS_DIR" -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DBUILD_SHARED_LIBS=ON -DWITH_GTEST=OFF -DCMAKE_PREFIX_PATH="$AE_DEPS_DIR" -DCMAKE_INSTALL_PREFIX="$AE_DEPS_DIR" -DCMAKE_BUILD_TYPE=Release ..
   make -j install
   popd # build
   popd # glog-0.6.0
@@ -40,7 +40,7 @@ fi
 if [[ ! -f "$AE_HOME/.geos" ]]; then
   wget "https://github.com/libgeos/geos/releases/download/3.11.0/geos-3.11.0.tar.bz2" -O "$AE_TMP_DIR/geos.tar.bz2"
   rm -rf geos-3.11.0
-  tar jxvf geos.tar.bz2
+  tar jxf geos.tar.bz2
   pushd geos-3.11.0
   mkdir -p build
   pushd build
@@ -72,9 +72,9 @@ fi
 if [[ ! -f "$AE_HOME/.boost" ]]; then
   wget "https://archives.boost.io/release/1.85.0/source/boost_1_85_0.tar.bz2" -O "$AE_TMP_DIR/boost.tar.bz2"
   rm -rf boost_1_85_0
-  tar jxvf boost.tar.bz2
+  tar jxf boost.tar.bz2
   pushd boost_1_85_0
-  ./bootstrap.sh --prefix="$AE_DEPS_DIR"
+  ./bootstrap.sh --prefix="$AE_DEPS_DIR" --without-libraries=python
   ./b2 install
   popd # boost_1_85_0
   touch "$AE_HOME/.boost"
