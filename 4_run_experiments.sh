@@ -36,8 +36,9 @@ fi
 ./update.sh
 
 # Fig 13
-./pip.sh
-
+if [[ $AE_RUN_GPU == "ON" ]]; then
+  ./pip.sh
+fi
 popd # query
 popd # expr
 
