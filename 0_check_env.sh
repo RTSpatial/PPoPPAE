@@ -13,6 +13,7 @@ function check_exec() {
 check_exec "wget"
 check_exec "unzip"
 check_exec "md5sum"
+check_exec "awk"
 check_exec "tar"
 check_exec "cmake"
 check_exec "conda"

@@ -16,7 +16,7 @@ function download_unzip() {
     download_checksum=$(md5sum "$filename" | awk '{ print $1 }')
     if [[ $download_checksum == "$checksum" ]]; then
       rm -rf "$name" # remove dataset folder
-      tar jxvf "$filename"
+      tar zxvf "$filename"
     else
       echo "checksum of $filename is incorrect, $download_checksum vs $checksum"
       exit 1
