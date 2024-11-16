@@ -82,27 +82,27 @@ else
   echo "boost is installed, skip"
 fi
 
+if [[ ! -f "$AE_HOME/.optix" ]]; then
+  "$AE_HOME"/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64.sh --prefix="$AE_DEPS_DIR" --exclude-subdir --skip-license
+  touch "$AE_HOME/.optix"
+else
+  echo "OptiX is installed, skip"
+fi
+
+if [[ ! -f "$AE_HOME/.rtspatial" ]]; then
+  pushd "$AE_HOME/RTSpatial"
+  mkdir -p build
+  pushd build
+  cmake -DCMAKE_INSTALL_PREFIX="$AE_DEPS_DIR" -DCMAKE_BUILD_TYPE=Release ..
+  make -j install
+  popd # build
+  popd # "$AE_HOME/RTSpatial"
+  touch "$AE_HOME/.rtspatial"
+else
+  echo "RTSpatial is installed, skip"
+fi
+
 if [[ "$AE_BUILD_GPU" == "ON" ]]; then
-  if [[ ! -f "$AE_HOME/.optix" ]]; then
-    "$AE_HOME"/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64.sh --prefix="$AE_DEPS_DIR" --exclude-subdir --skip-license
-    touch "$AE_HOME/.optix"
-  else
-    echo "OptiX is installed, skip"
-  fi
-
-  if [[ ! -f "$AE_HOME/.rtspatial" ]]; then
-    pushd "$AE_HOME/RTSpatial"
-    mkdir -p build
-    pushd build
-    cmake -DCMAKE_INSTALL_PREFIX="$AE_DEPS_DIR" -DCMAKE_BUILD_TYPE=Release ..
-    make -j install
-    popd # build
-    popd # "$AE_HOME/RTSpatial"
-    touch "$AE_HOME/.rtspatial"
-  else
-    echo "RTSpatial is installed, skip"
-  fi
-
   if [[ ! $(conda env list | grep ppopp-ae-rapids) ]]; then
     echo "Installing cuSpatial. This can take a long time."
     conda install -n base conda-libmamba-solver -y
