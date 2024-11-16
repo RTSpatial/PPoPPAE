@@ -1,0 +1,9 @@
+[submodule "RTSpatial"]
+	path = RTSpatial
+	url = https://github.com/RTSpatial/RTSpatial.git
+[submodule "SpatialQueryBenchmark"]
+	path = SpatialQueryBenchmark
+	url = https://github.com/RTSpatial/SpatialQueryBenchmark.git
+[submodule "RayJoin"]
+	path = RayJoin
+	url = https://github.com/pwrliang/RayJoin.git

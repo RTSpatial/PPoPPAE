@@ -91,15 +91,13 @@ if [[ "$AE_BUILD_GPU" == "ON" ]]; then
   fi
 
   if [[ ! -f "$AE_HOME/.rtspatial" ]]; then
-    rm -rf RTSpatial
-    git clone https://github.com/RTSpatial/RTSpatial.git
-    pushd RTSpatial
+    pushd "$AE_HOME/RTSpatial"
     mkdir -p build
     pushd build
     cmake -DCMAKE_INSTALL_PREFIX="$AE_DEPS_DIR" -DCMAKE_BUILD_TYPE=Release ..
     make -j install
     popd # build
-    popd # RTSpatial
+    popd # "$AE_HOME/RTSpatial"
     touch "$AE_HOME/.rtspatial"
   else
     echo "RTSpatial is installed, skip"
