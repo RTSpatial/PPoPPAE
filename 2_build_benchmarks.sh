@@ -9,8 +9,11 @@ if [[ ! -f "$AE_HOME/.benchmark" ]]; then
   pushd SpatialQueryBenchmark
   mkdir -p build
   pushd build
-  cmake .. -DCMAKE_PREFIX_PATH="$AE_DEPS_DIR" -DUSE_GPU=$AE_BUILD_GPU -DCMAKE_BUILD_TYPE=Release
-  make query pip -j
+  cmake .. -DCMAKE_PREFIX_PATH="$AE_DEPS_DIR" -DUSE_GPU="$AE_BUILD_GPU" -DCMAKE_BUILD_TYPE=Release
+  make query -j
+  if [[ "$AE_BUILD_GPU" == "ON" ]]; then
+    make pip -j
+  fi
   popd # build
   popd # SpatialQueryBenchmark
   touch "$AE_HOME/.benchmark"
