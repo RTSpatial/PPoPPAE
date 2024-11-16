@@ -29,17 +29,17 @@ mkdir -p "$AE_DATASETS_DIR"
 
 if [[ ! -f "$AE_HOME/.datasets" ]]; then
   pushd datasets
-  download_unzip "https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/geng_161_buckeyemail_osu_edu/EThli6sqqExEnTR4sE-tPt0B6W6wrtLi4LO57bvUkQbv1A?e=k1d1L5" \
+  download_unzip "https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/geng_161_buckeyemail_osu_edu/EXfY0lgd3TxEm7PdAVUyeBUBnkVS73yPuUQmD_SNZTQwPQ?e=zfyDCy" \
     "polygons" \
-    "266d9febc270f0f8e0e78fc49c5eca64"
+    "d5c2a8053fd0b7359a5b83391f7d0b82"
 
-  download_unzip "https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/geng_161_buckeyemail_osu_edu/ER3IFW1VVs9AkzWdrmd4egkBCKv4SPPhb8JuBRvTpbfOCA?e=8cs2XK"
-  "queries" \
-    "8117bdc5bee83d2fa37a1558cc733643"
+  download_unzip "https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/geng_161_buckeyemail_osu_edu/ET0oD72sVAVChzAygsEMf6cBp9yLI96p1Q7wK50OJNU4OQ?e=ygp9u1" \
+    "queries" \
+    "64b560c3d067262b7ef7d7422c64225a"
 
-  download_unzip "https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/geng_161_buckeyemail_osu_edu/EXEkg7cDJMZOrlbZo3oilFAB4m_BmxIVUCW9slplqxYfTA?e=lkpbxo" \
+  download_unzip "https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/geng_161_buckeyemail_osu_edu/ES_1jKSdIKFCvnoRHy2Nt8gB634J_68E77oXanWpy6xVAg?e=xfupnL" \
     "synthetic" \
-    "da9bdb4eb53e2ee947738ecd333d4a88"
+    "ebe7dcf4001132d297a8022c110cedeb"
 
   touch "$AE_HOME/.datasets"
   popd # datasets

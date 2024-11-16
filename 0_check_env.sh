@@ -10,7 +10,6 @@ function check_exec() {
   fi
 }
 
-check_exec "git"
 check_exec "wget"
 check_exec "unzip"
 check_exec "md5sum"

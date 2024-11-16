@@ -13,7 +13,6 @@ If your RTX GPU is not the first one, you should make it accessible to the bench
 ### 1.2 Software
 The user should make sure the following programs are available.
 - bash
-- git
 - wget
 - unzip
 - tar
