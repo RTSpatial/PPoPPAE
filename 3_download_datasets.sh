@@ -7,19 +7,23 @@ function download_unzip() {
   link=$1
   name="$2"
   checksum=$3
-  filename="$name.tar.bz2"
-  if [[ ! -d "$name" ]]; then
-    conda run -n ppopp-ae-python --live-stream python3 download_dataset.py "$link" \
-      "$filename"
-
-    if [[ $(md5sum "$filename") == "$checksum" ]]; then
+  filename="$name.tar.gz"
+  if [[ ! -f ".$name" ]]; then
+    if [[ ! -f "$filename" ]]; then
+      conda run -n ppopp-ae-python --live-stream python3 "$AE_HOME"/download_dataset.py "$link" \
+        "$filename"
+    fi
+    download_checksum=$(md5sum "$filename" | awk '{ print $1 }')
+    if [[ $download_checksum == "$checksum" ]]; then
+      rm -rf "$name" # remove dataset folder
       tar jxvf "$filename"
     else
-      echo "checksum of $filename is incorrect"
+      echo "checksum of $filename is incorrect, $download_checksum vs $checksum"
       exit 1
     fi
+    touch ".$name"
   else
-    echo "directory $name exists, skip"
+    echo "$name is downloaded, skip"
   fi
 
 }
