@@ -29,14 +29,14 @@ fi
 # Collect data for Fig 7-10
 ./query.sh ${options}
 
-# Fig 11
-./scalability.sh
-
-# Fig 12
-./update.sh
-
-# Fig 13
 if [[ $AE_RUN_GPU == "ON" ]]; then
+  # Fig 11
+  ./scalability.sh
+
+  # Fig 12
+  ./update.sh
+
+  # Fig 13
   ./pip.sh
 fi
 popd # query
