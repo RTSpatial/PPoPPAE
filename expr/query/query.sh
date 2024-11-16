@@ -230,7 +230,7 @@ function vary_parallelism_range_query_intersects() {
           -index_type $index_type \
           -parallelism 512 \
           -avg_time=false \
-          -load_factor=0.0015"
+          -load_factor=0.002"
 
       echo "$cmd" >"${log}.tmp"
       eval "$cmd" 2>&1 | tee -a "${log}.tmp"
