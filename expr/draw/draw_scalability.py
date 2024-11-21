@@ -85,7 +85,7 @@ def draw_query(prefix, ):
 
     fig.tight_layout(pad=0.1)
 
-    fig.savefig("fig11.pdf", format='pdf', bbox_inches='tight')
+    fig.savefig("scalability.pdf", format='pdf', bbox_inches='tight')
     # plt.show()
 
 

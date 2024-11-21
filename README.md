@@ -45,9 +45,10 @@ You can control whether to evaluate CPU/GPU-based baselines by setting variables
 `AE_RUN_CPU` and `AE_RUN_GPU` in [common.sh](common.sh). Additionally, you may also set `AE_BUILD_GPU` to `OFF`
 if your machine does not have installed CUDA.
 
-If you run the CPU and GPU baselines on different machines, you should manually merge the
-execution logs into the folder `expr/query/logs` and run [5_draw_figures.sh](5_draw_figures.sh)
-to generate figures.
+If you run the CPU and GPU baselines on different machines, [5_draw_figures.sh](5_draw_figures.sh) will fail because some
+logs are missing. You should manually merge the execution logs into the folder `expr/query/logs`.
+This can be done with `rsync -avz MACHINE_A:/path/to/PPoPPAE/expr/query/logs/* /path/to/PPoPPAE/expr/query/logs/`.
+Then you can run [5_draw_figures.sh](5_draw_figures.sh) to generate figures.
 
 ### 1.4 Variation of performance numbers 
 

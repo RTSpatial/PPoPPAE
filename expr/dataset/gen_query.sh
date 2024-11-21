@@ -139,5 +139,5 @@ gen_range_query_contains
 gen_range_query_contains_vary_size
 
 gen_range_query_intersects $INTERSECTS_QUERY_SIZE
-#gen_range_query_intersects $RAY_DUP_INTERSECTS_QUERY_SIZE
+gen_range_query_intersects $RAY_DUP_INTERSECTS_QUERY_SIZE
 gen_range_query_intersects_vary_size "0.001"

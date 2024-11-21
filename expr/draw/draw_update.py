@@ -227,8 +227,8 @@ def draw_update_query(prefix):
 
 def draw_all(prefix):
     plt.rcParams.update({'font.size': 12.})
-    plt.rcParams['hatch.linewidth'] = 2
-    fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(12.5, 3.7))
+    plt.rcParams['hatch.linewidth'] = 1
+    fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(12.5, 3.7), gridspec_kw={'width_ratios': [1.3, 1, 1]})
     fig.subplots_adjust(wspace=-0.2)  # Adjust the width space between axes
 
     ax1, ax2, ax3, = axes
@@ -257,7 +257,10 @@ def draw_all(prefix):
             os.path.join(prefix + "/range-contains_queries_" + str(query_size), index_type), datasets)
         index_loading_time[index_type] = loading_time
         index_query_time[index_type] = query_time
+
+
     index_loading_time = pd.DataFrame.from_dict(index_loading_time, )
+    print("Building Speedup over LBVH", index_loading_time['lbvh'] / index_loading_time['rtspatial'])
     # 1. Choose your desired colormap
     cmap = plt.get_cmap('gist_gray')
 
@@ -275,15 +278,14 @@ def draw_all(prefix):
         for patch in bar:
             patch.set_hatch(hatches[i])
 
-    ax1.set_xticks(loc, dataset_labels, rotation=0)
+    ax1.set_xticks(loc, dataset_labels, rotation=20)
     ax1.set_xlabel("(a) Index construction time")
     ax1.set_ylabel(ylabel='Time (ms)', labelpad=1)
     ax1.set_yscale('log')
     # x0, x1 = ax1.get_xlim()
     # ax1.set_xlim(x0 + 0.15, x1 - 0.15)  # x-margins does not work with pandas
     ax1.margins(y=0.35)
-    ax1.legend(loc='upper left', ncol=2, handletextpad=0.3,
-               borderaxespad=0.2, frameon=False)
+    ax1.legend(loc='upper left', ncol=2, frameon=False, columnspacing=4)
 
     batch_sizes = ("1000", "10000", "100000", "1000000",)
 
@@ -304,7 +306,7 @@ def draw_all(prefix):
                ncol=1, handletextpad=0.3,
                borderaxespad=0.2, frameon=False)
 
-    dataset = "parks_Europe.wkt.log"
+    dataset = "parks.bz2.wkt.log"
     update_ratios = ("0.0002", "0.002", "0.02", "0.2",)
 
     point_contains_slowdown = get_query_performance_slowdown(prefix, "point-contains", dataset, "100000", update_ratios)
@@ -333,7 +335,7 @@ def draw_all(prefix):
         ax.set_xlim(x0 + 0.15, x1 - 0.15)  # x-margins does not work with pandas
 
     fig.tight_layout(pad=0.)
-    fig.savefig('fig12.pdf', format='pdf', bbox_inches='tight')
+    fig.savefig('update_all.pdf', format='pdf', bbox_inches='tight')
     # plt.show()
 
 
