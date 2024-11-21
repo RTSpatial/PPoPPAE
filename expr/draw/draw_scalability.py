@@ -69,7 +69,7 @@ def draw_query(prefix, ):
     print("Range Intersects, Uniform", query_time_uniform)
 
     titles = ("(a) Point queries scalability",
-              "(c) Range-intersects queries scalability",)
+              "(b) Range-intersects queries scalability",)
 
     for i, ax in enumerate(axes):
         for j, line in enumerate(ax.get_lines()):
