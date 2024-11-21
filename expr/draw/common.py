@@ -1,5 +1,3 @@
-from SpatialQueryBenchmark.expr.draw.common import linestyles
-
 datasets = ("dtl_cnty.wkt.log", "USACensusBlockGroupBoundaries.wkt.log", "USADetailedWaterBodies.wkt.log",
             "parks_Europe.wkt.log", "lakes.bz2.wkt.log", "parks.bz2.wkt.log")
 dataset_labels = ("USCounty", "USCensus", "USWater", "EUParks", "OSMLakes", "OSMParks")
