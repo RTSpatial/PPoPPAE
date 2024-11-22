@@ -164,6 +164,7 @@ def draw_point_query(prefix, ):
         print("Dataset", datasets[i])
         print("Speedup over best CPU", cpu_time / rtspatial_time)
         print("Speedup over best GPU", gpu_time / rtspatial_time)
+        print("Speedup over the best", min(gpu_time, cpu_time) / rtspatial_time)
         print()
 
     # 1. Choose your desired colormap
@@ -272,6 +273,7 @@ def draw_range_contains_query(prefix, ):
         lbvh_time = index_query_time.iloc[i]['lbvh']
         rtspatial_time = index_query_time.iloc[i]['rtspatial']
         print("Dataset", datasets[i])
+        print("LBVH over Boost", rtree_time / lbvh_time)
         print("Speedup over best CPU", cpu_time / rtspatial_time)
         print("Speedup over best GPU", lbvh_time / rtspatial_time)
         print("Speedup over the best baseline", min(cpu_time, lbvh_time) / rtspatial_time)
