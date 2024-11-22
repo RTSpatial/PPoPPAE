@@ -107,8 +107,8 @@ function run_update_query() {
   done
 }
 
-run_update "insertion"
-run_update "deletion"
+#run_update "insertion"
+#run_update "deletion"
 
 run_update_batch "insertion"
 run_update_batch "deletion"
